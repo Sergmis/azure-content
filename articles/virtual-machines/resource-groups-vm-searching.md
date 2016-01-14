@@ -177,24 +177,24 @@ To do this in PowerShell, first switch to the Resource Manager mode of Azure Pow
 For the first step above, list the publishers with these commands.
 
 	$locName="<Azure location, such as West US>"
-	Get-AzureVMImagePublisher -Location $locName | Select PublisherName
+	Get-AzureRmVMImagePublisher -Location $locName | Select PublisherName
 
 Fill in your chosen publisher name and run these commands.
 
 	$pubName="<publisher>"
-	Get-AzureVMImageOffer -Location $locName -Publisher $pubName | Select Offer
+	Get-AzureRmVMImageOffer -Location $locName -Publisher $pubName | Select Offer
 
 Fill in your chosen offer name and run these commands.
 
 	$offerName="<offer>"
-	Get-AzureVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
+	Get-AzureRmVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
 
-From the display of the **Get-AzureVMImageSku** command, you have all the information you need to specify the image for a new virtual machine.
+From the display of the **Get-AzureRmVMImageSku** command, you have all the information you need to specify the image for a new virtual machine.
 
 Here is an example.
 
 	PS C:\> $locName="West US"
-	PS C:\> Get-AzureVMImagePublisher -Location $locName | Select PublisherName
+	PS C:\> Get-AzureRmVMImagePublisher -Location $locName | Select PublisherName
 
 	PublisherName
 	-------------
@@ -213,7 +213,7 @@ Here is an example.
 For the "MicrosoftWindowsServer" publisher:
 
 	PS C:\> $pubName="MicrosoftWindowsServer"
-	PS C:\> Get-AzureVMImageOffer -Location $locName -Publisher $pubName | Select Offer
+	PS C:\> Get-AzureRmVMImageOffer -Location $locName -Publisher $pubName | Select Offer
 
 	Offer
 	-----
@@ -222,7 +222,7 @@ For the "MicrosoftWindowsServer" publisher:
 For the "WindowsServer" offer:
 
 	PS C:\> $offerName="WindowsServer"
-	PS C:\> Get-AzureVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
+	PS C:\> Get-AzureRmVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
 
 	Skus
 	----
@@ -231,7 +231,7 @@ For the "WindowsServer" offer:
 	2012-R2-Datacenter
 	Windows-Server-Technical-Preview
 
-From this list, copy the chosen SKU name, and you have all the information for the **Set-AzureVMSourceImage** PowerShell cmdlet or for a resource group template file that requires you to specify the publisher, offer, and SKU for an image.
+From this list, copy the chosen SKU name, and you have all the information for the **Set-AzureRmVMSourceImage** PowerShell cmdlet or for a resource group template file that requires you to specify the publisher, offer, and SKU for an image.
 
 ### Video walkthrough
 
